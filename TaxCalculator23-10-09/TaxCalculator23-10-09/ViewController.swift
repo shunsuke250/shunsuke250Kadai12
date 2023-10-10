@@ -8,12 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet private weak var excludingTaxTextField: UITextField!
+    @IBOutlet private weak var taxRateTextField: UITextField!
+    @IBOutlet private weak var includingTaxLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
 
