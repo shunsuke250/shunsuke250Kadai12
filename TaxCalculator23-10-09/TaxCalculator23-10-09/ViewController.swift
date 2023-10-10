@@ -12,8 +12,11 @@ class ViewController: UIViewController {
     @IBOutlet private weak var taxRateTextField: UITextField!
     @IBOutlet private weak var includingTaxLabel: UILabel!
 
+    private let taxRateKey = "taxRate"
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTaxRate()
     }
 
     @IBAction func didTapCalculateButton(_ sender: Any) {
@@ -22,12 +25,22 @@ class ViewController: UIViewController {
            let tax = taxRateTextField.text,
            let taxRate = Double(tax) {
             let ans = calculateIncludingTax(excludingTax: excludingTax, taxRate: taxRate)
+            saveTaxRate(taxRate: taxRate)
             includingTaxLabel.text = "\(Int(ans))"
         }
     }
 
     private func calculateIncludingTax(excludingTax: Double, taxRate: Double) -> Double {
-        return excludingTax + excludingTax * taxRate / 100
+        excludingTax + excludingTax * taxRate / 100
+    }
+
+    private func saveTaxRate(taxRate: Double) {
+        UserDefaults.standard.setValue(taxRate, forKey: taxRateKey)
+    }
+
+    private func loadTaxRate() {
+        if let savedTaxRate = UserDefaults.standard.value(forKey: taxRateKey) as? Double {
+            taxRateTextField.text = "\(Int(savedTaxRate))"
+        }
     }
 }
-
