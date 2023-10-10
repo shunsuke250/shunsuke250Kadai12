@@ -15,5 +15,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    @IBAction func didTapCalculateButton(_ sender: Any) {
+        if let text = excludingTaxTextField.text,
+           let excludingTax = Double(text),
+           let tax = taxRateTextField.text,
+           let taxRate = Double(tax) {
+            let ans = calculateIncludingTax(excludingTax: excludingTax, taxRate: taxRate)
+            includingTaxLabel.text = "\(Int(ans))"
+        }
+    }
+
+    private func calculateIncludingTax(excludingTax: Double, taxRate: Double) -> Double {
+        return excludingTax + excludingTax * taxRate / 100
+    }
 }
 
