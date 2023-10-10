@@ -93,6 +93,9 @@
                                 <rect key="frame" x="167.33333333333334" y="247.00000000000003" width="58.666666666666657" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="計算"/>
+                                <connections>
+                                    <action selector="didTapCalculateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6CY-TG-w3q"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
