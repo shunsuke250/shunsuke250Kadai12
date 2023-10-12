@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         loadTaxRate()
     }
 
-    @IBAction private func didTapCalculateButton(_ sender: Any) {
+    @IBAction private func didTapCalculateButton(_ sender: UIButton) {
         if let text = excludingTaxTextField.text,
            let excludingTax = Double(text),
            let tax = taxRateTextField.text,
