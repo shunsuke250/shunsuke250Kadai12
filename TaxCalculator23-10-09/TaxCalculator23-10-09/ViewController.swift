@@ -20,14 +20,17 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func didTapCalculateButton(_ sender: UIButton) {
-        if let text = excludingTaxTextField.text,
-           let excludingTax = Double(text),
-           let tax = taxRateTextField.text,
-           let taxRate = Double(tax) {
-            let ans = calculateIncludingTax(excludingTax: excludingTax, taxRate: taxRate)
-            saveTaxRate(taxRate: taxRate)
-            includingTaxLabel.text = "\(Int(ans))"
+        guard let text = excludingTaxTextField.text,
+              let excludingTax = Double(text),
+              let tax = taxRateTextField.text,
+              let taxRate = Double(tax) else {
+
+            return
         }
+
+        let ans = calculateIncludingTax(excludingTax: excludingTax, taxRate: taxRate)
+        saveTaxRate(taxRate: taxRate)
+        includingTaxLabel.text = "\(Int(ans))"
     }
 
     private func calculateIncludingTax(excludingTax: Double, taxRate: Double) -> Double {
